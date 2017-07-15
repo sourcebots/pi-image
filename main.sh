@@ -23,7 +23,7 @@ cd building
 function buildme {
     git clone --depth 1 $1 $2
     pushd $2
-    sudo mk-build-deps -i
+    yes | sudo mk-build-deps -i
     debuild -uc -us
     popd
 }
