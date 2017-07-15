@@ -10,4 +10,4 @@ function canhas {
 
 echo "Installing dependencies"
 canhas curl
-
+canhas unzip
