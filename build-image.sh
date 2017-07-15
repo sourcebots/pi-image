@@ -6,4 +6,6 @@ unzip raspbian.zip
 IMAGE=$(ls *-raspbian-*.img)
 
 mkdir raspbian-base
-mount -o loop $IMAGE raspbian-base/
+kpartx -av $IMAGE
+mount /dev/mapper/loop0p2 raspbian-base
+ls raspbian-base
