@@ -2,9 +2,8 @@ version: 2.0
 
 jobs:
     build:
+        machine: true
         working_directory: ~/pi-image
-        docker:
-            - image: debian:stretch
         steps:
             - checkout
             - run: ./install-dependencies.sh
