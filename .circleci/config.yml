@@ -13,4 +13,6 @@ jobs:
             - run: ./download-image.sh
             - save_cache:
                 key: baseimage-{{ .Branch }}-{{ checksum "download-image.sh" }}
+                paths:
+                  - raspbian.zip
             - run: ./build-image.sh
