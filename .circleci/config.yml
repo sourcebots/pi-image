@@ -16,3 +16,6 @@ jobs:
                   - /tmp/raspbian.zip
             - run: cp /tmp/raspbian.zip ./
             - run: sudo ./build-image.sh
+            - store_artifacts:
+                path: pi-image.img
+                destination: pi-image.img

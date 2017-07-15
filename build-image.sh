@@ -24,3 +24,5 @@ umount $TARGET
 sync
 
 sha1sum $IMAGE
+
+cp $IMAGE pi-image.img
