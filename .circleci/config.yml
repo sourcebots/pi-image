@@ -8,4 +8,9 @@ jobs:
         steps:
             - checkout
             - run: ./install-dependencies.sh
+            - restore_cache:
+                key: baseimage-{{ .Branch }}-{{ checksum "download-image.sh" }}
             - run: ./download-image.sh
+            - save_cache:
+                key: baseimage-{{ .Branch }}-{{ checksum "download-image.sh" }}
+            - run: ./build-image.sh
