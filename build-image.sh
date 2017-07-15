@@ -6,6 +6,8 @@ unzip raspbian.zip
 IMAGE=$(ls *-raspbian-*.img)
 TARGET=raspbian-base
 
+sha1sum $IMAGE
+
 mkdir $TARGET
 kpartx -av $IMAGE
 mount /dev/mapper/loop0p2 $TARGET
@@ -21,3 +23,4 @@ rm $TARGET/usr/bin/qemu-arm-static
 umount $TARGET
 sync
 
+sha1sum $IMAGE
