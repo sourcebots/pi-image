@@ -2,8 +2,8 @@
 
 set -e
 echo "Updating apt"
-sudo apt-get update
+apt-get update
 
 echo "Installing dependencies"
-sudo apt-get install curl
+apt-get install curl
 
