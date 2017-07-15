@@ -8,4 +8,4 @@ jobs:
         steps:
             - checkout
             - run: ./install-dependencies.sh
-            - run: ./build-image.sh
+            - run: ./download-image.sh
