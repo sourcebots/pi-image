@@ -4,4 +4,3 @@ set -e
 
 unzip raspbian.zip
 ls *
-
