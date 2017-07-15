@@ -10,6 +10,4 @@ fi
 
 echo "Downloading Raspbian image"
 curl -L $IMAGE -o raspbian.zip
-unzip raspbian.zip
-ls *
 
