@@ -1,5 +1,10 @@
 version: 2.0
 
-test:
-    override:
-        - ./build-image.sh
+jobs:
+    build:
+        working_directory: ~/pi-image
+        docker:
+            - image: debian:stretch
+        steps:
+            - checkout
+            - run: ./build-image.sh
