@@ -6,7 +6,7 @@ jobs:
         working_directory: ~/pi-image
         steps:
             - checkout
-            - run: ./install-dependencies.sh
+            - run: sudo ./install-dependencies.sh
             - restore_cache:
                 key: baseimage-{{ .Branch }}-{{ checksum "download-image.sh" }}
             - run: ./download-image.sh
@@ -14,4 +14,4 @@ jobs:
                 key: baseimage-{{ .Branch }}-{{ checksum "download-image.sh" }}
                 paths:
                   - raspbian.zip
-            - run: ./build-image.sh
+            - run: sudo ./build-image.sh
