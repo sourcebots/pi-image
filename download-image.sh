@@ -1,5 +1,5 @@
 #!/bin/bash
-IMAGE=https://downloads.raspberrypi.org/raspbian_latest
+IMAGE=https://downloads.raspberrypi.org/raspbian_lite_latest
 
 set -e
 
