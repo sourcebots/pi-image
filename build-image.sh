@@ -4,8 +4,20 @@ set -e
 
 unzip raspbian.zip
 IMAGE=$(ls *-raspbian-*.img)
+TARGET=raspbian-base
 
-mkdir raspbian-base
+mkdir $TARGET
 kpartx -av $IMAGE
-mount /dev/mapper/loop0p2 raspbian-base
-ls raspbian-base
+mount /dev/mapper/loop0p2 $TARGET
+
+cp /usr/bin/qemu-arm-static $TARGET/usr/bin/qemu-arm-static
+cp main.sh $TARGET/main.sh
+
+chroot $TARGET /main.sh
+
+rm $TARGET/main.sh
+rm $TARGET/usr/bin/qemu-arm-static
+
+umount $TARGET
+sync
+
