@@ -7,4 +7,5 @@ jobs:
             - image: debian:stretch
         steps:
             - checkout
+            - run: ./install-dependencies.sh
             - run: ./build-image.sh
