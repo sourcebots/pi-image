@@ -9,7 +9,7 @@ jobs:
             - run: sudo ./install-dependencies.sh
             - restore_cache:
                 key: baseimage-{{ .Branch }}-{{ checksum "download-image.sh" }}
-            - run: sudo ./download-image.sh
+            - run: ./download-image.sh
             - save_cache:
                 key: baseimage-{{ .Branch }}-{{ checksum "download-image.sh" }}
                 paths:
