@@ -4,6 +4,10 @@ set -e
 echo "Updating apt"
 apt-get update
 
+function canhas {
+    DEBIAN_FRONTEND=noninteractive apt-get -y install $1
+}
+
 echo "Installing dependencies"
-apt-get install curl
+canhas curl
 
