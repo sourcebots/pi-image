@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-echo 'deb [arch=armhf] https://ports.ubuntu.com/ trusty main restricted' >> /etc/apt/sources.list
+echo 'deb [arch=armhf] http://ports.ubuntu.com/ trusty main restricted' >> /etc/apt/sources.list
 echo 'deb-src [arch=armhf] http://ports.ubuntu.com/ trusty main restricted' >> /etc/apt/sources.list
 cat /etc/apt/sources.list
 #sudo dpkg --add-architecture armhf
