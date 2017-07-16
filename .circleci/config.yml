@@ -6,6 +6,7 @@ jobs:
         working_directory: ~/pi-image
         steps:
             - checkout
+            - run: git submodule update --init
             - run: sudo ./gen-image.sh
             - run: xz -9 pi-image.img
             - store_artifacts:
