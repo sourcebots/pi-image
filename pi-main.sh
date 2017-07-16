@@ -10,7 +10,7 @@ cd building
 function buildme {
     mkdir build-$2
     pushd build-$2
-    git clone --depth 1 $1 $2
+    git clone $1 $2
     echo "...clone is done"
     ls -l
     pushd $2
