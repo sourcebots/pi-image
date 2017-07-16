@@ -46,4 +46,4 @@ echo "Re-updating apt"
 apt-get update -y
 
 echo "Installing local packages"
-apt-get install -y automount
+apt-get install -y automount || true
