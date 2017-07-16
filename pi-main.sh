@@ -11,6 +11,8 @@ function buildme {
     mkdir build-$2
     pushd build-$2
     git clone --depth 1 $1 $2
+    echo "...clone is done"
+    ls -l
     pushd $2
     echo "Installing build dependencies for $2"
     yes | sudo mk-build-deps -i
