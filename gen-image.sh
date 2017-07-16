@@ -15,7 +15,7 @@ set -e
 #sudo apt-get install -y crossbuild-essential-armhf
 
 sudo apt-get update -y
-sudo apt-get install -y qemu-user-static debootstrap debian-archive-keyring bmap-tools whois
+sudo apt-get install -y qemu-user-static debootstrap debian-archive-keyring bmap-tools whois gcc-arm-linux-gnueabihf
 
 export RPI_MODEL=3
 export RELEASE=stretch
