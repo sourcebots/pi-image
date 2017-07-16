@@ -40,5 +40,5 @@ export IMAGE_NAME=$(pwd)/pi-image.img
 cd rpi23-gen-image
 
 # Don't install the cross-compile tool
-sed -i '/crossbuild-essential-armhf/d' ./rpi23-gen-image.sh
+sed -i 's/crossbuild-essential-armhf/gcc-arm-linux-gnueabihf/' ./rpi23-gen-image.sh
 exec ./rpi23-gen-image.sh
