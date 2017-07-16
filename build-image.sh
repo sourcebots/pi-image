@@ -13,7 +13,7 @@ kpartx -av $IMAGE
 mount /dev/mapper/loop0p2 $TARGET
 
 cp /usr/bin/qemu-arm-static $TARGET/usr/bin/qemu-arm-static
-cp main.sh $TARGET/main.sh
+cp pi-main.sh $TARGET/main.sh
 # Disable ld preload
 mv $TARGET/etc/ld.so.preload ./ld.so.preload
 
