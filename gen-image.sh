@@ -15,7 +15,7 @@ set -e
 #sudo apt-get install -y crossbuild-essential-armhf
 
 sudo apt-get update -y
-sudo apt-get install -y qemu-user-static
+sudo apt-get install -y qemu-user-static debootstrap debian-archive-keyring bmap-tools whois
 
 export RPI_MODEL=3
 export RELEASE=stretch
@@ -38,4 +38,7 @@ export IMAGE_NAME=$(pwd)/pi-image.img
 # TODO: copy in some build things
 
 cd rpi23-gen-image
+
+# Don't install the cross-compile tool
+sed -i '' '/crossbuild-essential-armhf/d' ./rpi23-gen-image.sh
 exec ./rpi23-gen-image.sh
