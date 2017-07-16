@@ -21,7 +21,7 @@ function buildme {
     popd
     ls
     mv *.deb /sb-debs/
-    mv *.tar.gz /sb-debs/
+    mv *.tar.* /sb-debs/
     popd
 }
 
