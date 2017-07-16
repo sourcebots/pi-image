@@ -37,6 +37,7 @@ export ENABLE_INITRAMFS=true
 export ENABLE_IFNAMES=false
 export IMAGE_NAME=$(pwd)/pi-image.img
 
+sudo cp stretch /usr/share/debootstrap/scripts/stretch
 
 # TODO: copy in some build things
 
