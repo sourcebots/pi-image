@@ -39,8 +39,8 @@ dpkg-scansources . /dev/null > Sources
 xz -9 Sources
 
 echo "Adding local repository to sources"
-echo "deb file:/sb-debs ./" >> /etc/apt/sources.list
-echo "deb-src file:/sb-debs ./" >> /etc/apt/sources.list
+echo "deb [trusted=yes] file:/sb-debs ./" >> /etc/apt/sources.list
+echo "deb-src [trusted=yes] file:/sb-debs ./" >> /etc/apt/sources.list
 
 echo "Re-updating apt"
 apt-get update -y
