@@ -6,23 +6,7 @@ jobs:
         working_directory: ~/pi-image
         steps:
             - checkout
-            - run: sudo ./install-dependencies.sh
-            - restore_cache:
-                key: baseimage-{{ .Branch }}-{{ checksum "download-image.sh" }}
-            - run: ./download-image.sh /tmp/raspbian.zip
-            - save_cache:
-                key: baseimage-{{ .Branch }}-{{ checksum "download-image.sh" }}
-                paths:
-                  - /tmp/raspbian.zip
-            - run: cp /tmp/raspbian.zip ./
-            - restore_cache:
-                key: prebuilt-{{ .Branch }}-{{ checksum "download-image.sh" }}-{{ checksum "prebuild-image.sh" }}-{{ checksum "pi-prebuild.sh" }}
-            - run: sudo ./prebuild-image.sh
-            - save_cache:
-                key: prebuilt-{{ .Branch }}-{{ checksum "download-image.sh" }}-{{ checksum "prebuild-image.sh" }}-{{ checksum "pi-prebuild.sh" }}
-                paths:
-                  - /tmp/raspbian-base.img
-            - run: sudo ./build-image.sh
+            - run: sudo ./gen-image.sh
             - run: xz -9 pi-image.img
             - store_artifacts:
                 path: pi-image.img.xz
