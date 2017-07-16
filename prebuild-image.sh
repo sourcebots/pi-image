@@ -22,7 +22,7 @@ cp pi-prebuild.sh $TARGET/prebuild.sh
 # Disable ld preload
 mv $TARGET/etc/ld.so.preload ./ld.so.preload
 
-chroot $TARGET /prebuild.sh
+systemd-nspawn --directory=$TARGET --tmpfs=/tmp /prebuild.sh
 
 echo "Cleaning up"
 
