@@ -14,7 +14,8 @@ set -e
 #sudo apt-get update -y
 #sudo apt-get install -y crossbuild-essential-armhf
 
-sudo apt install -y qemu-user-static
+sudo apt-get update -y
+sudo apt-get install -y qemu-user-static
 
 export RPI_MODEL=3
 export RELEASE=stretch
