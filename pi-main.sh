@@ -17,6 +17,7 @@ function buildme {
     echo "Building $2"
     debuild -uc -us
     popd
+    ls
     mv *.deb /sb-debs/
     mv *.tar.gz /sb-debs/
     popd
