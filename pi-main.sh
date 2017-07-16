@@ -26,7 +26,7 @@ function buildme {
 }
 
 buildme https://github.com/sourcebots/automount automount
-#buildme https://github.com/sourcebots/robotd robotd
+buildme https://github.com/sourcebots/robotd robotd
 
 cd ..
 rm -rf building
@@ -47,3 +47,4 @@ apt-get update -y
 
 echo "Installing local packages"
 apt-get install -y automount || true
+apt-get install -y robotd || true
