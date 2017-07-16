@@ -14,9 +14,9 @@ apt-get dist-upgrade -y
 
 echo "Upgrade to Debian Stretch"
 sed -i 's/jessie/stretch/g' /etc/apt/sources.list
-apt-get update -y
-apt-get upgrade -y
-apt-get dist-upgrade -y
+apt-get update -y --force-yes
+apt-get upgrade -y --force-yes
+apt-get dist-upgrade -y --force-yes
 
 echo "Installing git"
 apt-get install -y git
