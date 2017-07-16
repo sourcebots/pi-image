@@ -23,6 +23,7 @@ jobs:
                 paths:
                   - /tmp/raspbian-base.img
             - run: sudo ./build-image.sh
+            - run: xz -9 pi-image.img
             - store_artifacts:
-                path: pi-image.img
-                destination: pi-image.img
+                path: pi-image.img.xz
+                destination: pi-image.img.xz
