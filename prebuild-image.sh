@@ -5,6 +5,8 @@ set -e
 if [ -f /tmp/raspbian-base.img ]; then
     echo "Not rerunning image prebuild"
     exit 0
+else
+    echo "/tmp/raspbian-base.img is missing, rebuilding"
 fi
 
 unzip raspbian.zip
