@@ -45,4 +45,5 @@ cd rpi23-gen-image
 
 # Don't install the cross-compile tool
 sed -i 's/crossbuild-essential-armhf/gcc-arm-linux-gnueabihf/' ./rpi23-gen-image.sh
+sed -i 's/dist-upgrade/--allow-unauthenticated dist-upgrade/' ./bootstrap.d/11-apt.sh
 exec ./rpi23-gen-image.sh
