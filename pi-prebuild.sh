@@ -5,6 +5,8 @@ set -e
 echo "Hello!"
 uname -a
 
+export DEBIAN_FRONTEND=noninteractive
+
 echo "Updating apt"
 apt-get update -y
 
@@ -14,9 +16,9 @@ apt-get dist-upgrade -y
 
 echo "Upgrade to Debian Stretch"
 sed -i 's/jessie/stretch/g' /etc/apt/sources.list
-DEBIAN_FRONTEND=noninteractive APT_LISTCHANGES_FRONTEND=mail apt-get update -y --force-yes
-DEBIAN_FRONTEND=noninteractive APT_LISTCHANGES_FRONTEND=mail apt-get upgrade -y --force-yes
-DEBIAN_FRONTEND=noninteractive APT_LISTCHANGES_FRONTEND=mail apt-get dist-upgrade -y --force-yes
+yes | apt-get update -y --force-yes
+yes | apt-get upgrade -y --force-yes
+yes | apt-get dist-upgrade -y --force-yes
 
 echo "Installing git"
 apt-get install -y git
