@@ -8,6 +8,7 @@ TARGET=raspbian-base
 
 sha1sum $IMAGE
 
+rmdir $target || true
 mkdir $TARGET
 kpartx -av $IMAGE
 mount /dev/mapper/loop0p2 $TARGET
@@ -22,6 +23,13 @@ chroot $TARGET /main.sh
 rm $TARGET/main.sh
 rm $TARGET/usr/bin/qemu-arm-static
 mv ./ld.so.preload $TARGET/etc/ld.so.preload
+
+sleep 2
+
+lsof $TARGET
+fuser -k -TERM $TARGET || true
+sleep 2
+fuser -k -KILL $TARGET || true
 
 umount $TARGET
 sync
