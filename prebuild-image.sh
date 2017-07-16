@@ -2,8 +2,13 @@
 
 set -e
 
-cp /tmp/raspbian-base.img ./raspbian-base.img
-IMAGE=raspbian-base.img
+if [ -f /tmp/raspbian-base.img ]; then
+    echo "Not rerunning image prebuild"
+    exit 0
+fi
+
+unzip raspbian.zip
+IMAGE=$(ls *-raspbian-*.img)
 TARGET=raspbian-base
 
 sha1sum $IMAGE
@@ -13,13 +18,13 @@ kpartx -av $IMAGE
 mount /dev/mapper/loop0p2 $TARGET
 
 cp /usr/bin/qemu-arm-static $TARGET/usr/bin/qemu-arm-static
-cp pi-main.sh $TARGET/main.sh
+cp pi-prebuild.sh $TARGET/prebuild.sh
 # Disable ld preload
 mv $TARGET/etc/ld.so.preload ./ld.so.preload
 
-chroot $TARGET /main.sh
+chroot $TARGET /prebuild.sh
 
-rm $TARGET/main.sh
+rm $TARGET/prebuild.sh
 rm $TARGET/usr/bin/qemu-arm-static
 mv ./ld.so.preload $TARGET/etc/ld.so.preload
 
@@ -30,4 +35,4 @@ kpartx -d $IMAGE
 
 sha1sum $IMAGE
 
-cp $IMAGE pi-image.img
+cp $IMAGE /tmp/raspbian-base.img

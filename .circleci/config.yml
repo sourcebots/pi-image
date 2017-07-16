@@ -15,6 +15,13 @@ jobs:
                 paths:
                   - /tmp/raspbian.zip
             - run: cp /tmp/raspbian.zip ./
+            - restore_cache:
+                key: prebuilt-{{ .Branch }}-{{ checksum "raspbian.zip" }}-{{ checksum "prebuild-image.sh" }}
+            - run: sudo ./prebuild-image.sh
+            - restore_cache:
+                key: prebuilt-{{ .Branch }}-{{ checksum "raspbian.zip" }}-{{ checksum "prebuild-image.sh" }}
+                paths:
+                  - /tmp/raspbian-base.img
             - run: sudo ./build-image.sh
             - store_artifacts:
                 path: pi-image.img
