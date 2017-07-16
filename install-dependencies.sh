@@ -15,3 +15,4 @@ canhas kpartx
 canhas qemu
 canhas binfmt-support
 canhas qemu-user-static
+canhas systemd-container
