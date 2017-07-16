@@ -30,9 +30,13 @@ rm $TARGET/prebuild.sh
 rm $TARGET/usr/bin/qemu-arm-static
 mv ./ld.so.preload $TARGET/etc/ld.so.preload
 
-sleep 4
+sleep 2
 
 lsof $TARGET
+fuser -k -TERM $TARGET
+sleep 2
+fuser -k -KILL $TARGET
+
 umount $TARGET
 sync
 
