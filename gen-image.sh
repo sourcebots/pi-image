@@ -14,6 +14,9 @@ set -e
 #sudo apt-get update -y
 #sudo apt-get install -y crossbuild-essential-armhf
 
+echo 'deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse' >> /etc/apt/sources.list
+echo 'deb-src http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse' >> /etc/apt/sources.list
+
 sudo apt-get update -y
 sudo apt-get install -y qemu-user-static debootstrap debian-archive-keyring bmap-tools whois gcc-arm-linux-gnueabihf
 
