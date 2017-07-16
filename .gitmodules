@@ -1,0 +1,3 @@
+[submodule "rpi23-gen-image"]
+	path = rpi23-gen-image
+	url = https://github.com/drtyhlpr/rpi23-gen-image
