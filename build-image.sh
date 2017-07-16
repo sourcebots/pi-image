@@ -8,7 +8,7 @@ TARGET=raspbian-base
 
 sha1sum $IMAGE
 
-rmdir $target || true
+rmdir $TARGET || true
 mkdir $TARGET
 kpartx -av $IMAGE
 mount /dev/mapper/loop0p2 $TARGET
