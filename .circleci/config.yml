@@ -18,7 +18,7 @@ jobs:
             - restore_cache:
                 key: prebuilt-{{ .Branch }}-{{ checksum "download-image.sh" }}-{{ checksum "prebuild-image.sh" }}
             - run: sudo ./prebuild-image.sh
-            - restore_cache:
+            - save_cache:
                 key: prebuilt-{{ .Branch }}-{{ checksum "download-image.sh" }}-{{ checksum "prebuild-image.sh" }}
                 paths:
                   - /tmp/raspbian-base.img
