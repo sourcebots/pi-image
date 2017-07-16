@@ -24,9 +24,13 @@ mv $TARGET/etc/ld.so.preload ./ld.so.preload
 
 chroot $TARGET /prebuild.sh
 
+echo "Cleaning up"
+
 rm $TARGET/prebuild.sh
 rm $TARGET/usr/bin/qemu-arm-static
 mv ./ld.so.preload $TARGET/etc/ld.so.preload
+
+sleep 1
 
 umount $TARGET
 sync
