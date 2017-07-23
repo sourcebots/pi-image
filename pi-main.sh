@@ -2,6 +2,10 @@
 
 set -e
 
+echo "Installing bits and pieces from backports"
+
+apt-get -t jessie-backports install -y python3-cffi
+
 mkdir sb-debs
 
 mkdir building
