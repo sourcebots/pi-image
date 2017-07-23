@@ -10,6 +10,7 @@ export APT_LISTCHANGES_FRONTEND=none
 
 echo "Adding backports"
 echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list
+mkdir -p ~/.gnupg
 gpg --keyserver subkeys.pgp.net --recv-keys 7638D0442B90D010
 gpg -a --export 7638D0442B90D010 | apt-key add -
 
