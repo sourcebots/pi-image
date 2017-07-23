@@ -15,13 +15,6 @@ echo "Upgrading anything out of date"
 apt-get upgrade -y
 apt-get dist-upgrade -y
 
-echo "Upgrade to Debian Stretch"
-sudo apt-mark hold firmware-brcm80211
-sed -i 's/jessie/stretch/g' /etc/apt/sources.list
-yes | apt-get update -y --force-yes
-yes | apt-get upgrade -y --force-yes
-yes | apt-get dist-upgrade -y --force-yes
-
 echo "Installing git"
 apt-get install -y git
 
