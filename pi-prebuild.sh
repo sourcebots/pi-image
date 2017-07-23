@@ -8,6 +8,9 @@ uname -a
 export DEBIAN_FRONTEND=noninteractive
 export APT_LISTCHANGES_FRONTEND=none
 
+echo "Adding backports"
+echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list
+
 echo "Updating apt"
 apt-get update -y
 
