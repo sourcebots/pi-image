@@ -24,3 +24,5 @@ apt-get install -y git
 echo "Installing build tools"
 apt-get install -y build-essential devscripts debhelper dh-systemd
 
+echo "Rebuilding locale"
+locale-gen en_US.UTF-8
