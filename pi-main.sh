@@ -53,5 +53,5 @@ echo "Re-updating apt"
 apt-get update -y
 
 echo "Installing local packages"
-apt-get install -y automount || true
+apt-get install -y runusb || true
 apt-get install -y robotd || true
