@@ -2,6 +2,8 @@
 
 set -e
 
+export LC_ALL="en_GB.UTF-8"
+
 echo "Installing bits and pieces from backports"
 
 apt-get -t jessie-backports install -y python3-cffi
