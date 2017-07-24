@@ -29,7 +29,7 @@ function buildme {
     popd
 }
 
-buildme https://github.com/sourcebots/automount automount
+buildme https://github.com/sourcebots/runusb runusb
 buildme https://github.com/sourcebots/robotd robotd
 
 cd ..
