@@ -25,4 +25,6 @@ echo "Installing build tools"
 apt-get install -y build-essential devscripts debhelper dh-systemd
 
 echo "Rebuilding locale"
-locale-gen en_US.UTF-8
+locale-gen en_US en_US.UTF-8
+locale-gen en_GB en_GB.UTF-8
+dpkg-reconfigure locales
