@@ -12,9 +12,9 @@ apt-get -t jessie-backports install -y python3-cffi
 mkdir sb-debs
 
 mkdir building
-cd building
 
 function buildme {
+    pushd building
     mkdir build-$2
     pushd build-$2
     git clone $1 $2
@@ -30,13 +30,13 @@ function buildme {
     mv *.deb /sb-debs/
     mv *.tar.* /sb-debs/
     popd
+    popd
 }
 
 buildme https://github.com/sourcebots/runusb runusb
 buildme https://github.com/sourcebots/sb-vision sb-vision
 buildme https://github.com/sourcebots/robotd robotd
 
-cd ..
 rm -rf building
 
 echo "Constructing local apt repository"
