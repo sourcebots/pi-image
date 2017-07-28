@@ -54,5 +54,5 @@ function buildme {
 }
 
 buildme sb-vision
-buildme robotd
-buildme runusb
+#buildme robotd
+#buildme runusb
