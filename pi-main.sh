@@ -50,8 +50,8 @@ function buildme {
     apt-get install -y $2
 }
 
-buildme https://github.com/sourcebots/runusb runusb
 buildme https://github.com/sourcebots/sb-vision sb-vision
 buildme https://github.com/sourcebots/robotd robotd
+buildme https://github.com/sourcebots/runusb runusb
 
 rm -rf building
