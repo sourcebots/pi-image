@@ -53,6 +53,6 @@ function buildme {
     apt-get install -y $1 || true
 }
 
-buildme sb-vision
+#buildme sb-vision
 #buildme robotd
 #buildme runusb
