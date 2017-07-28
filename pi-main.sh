@@ -30,34 +30,29 @@ function rebuild_repo {
 
 rebuild_repo
 
+cd /building
+
 function buildme {
-    pushd building
-    mkdir build-$2
-    pushd build-$2
-    git clone $1 $2
-    echo "...clone is done"
-    ls -l
-    pushd $2
-    echo "Installing build dependencies for $2"
+    pushd $1
+    echo "Installing build dependencies for $1"
     yes | sudo mk-build-deps -i debian/control
+
     echo "Building $2"
     debuild -uc -us
     popd
-    ls
+
     mv *.deb /sb-debs/
     mv *.tar.* /sb-debs/
-    popd
-    popd
 
     rebuild_repo
 
     echo "Re-updating apt"
     apt-get update -y
 
-    echo "Installing $2"
-    apt-get install -y $2 || true
+    echo "Installing $1"
+    apt-get install -y $1 || true
 }
 
-buildme https://github.com/sourcebots/sb-vision sb-vision
-buildme https://github.com/sourcebots/robotd robotd
-buildme https://github.com/sourcebots/runusb runusb
+buildme sb-vision
+buildme robotd
+buildme runusb
