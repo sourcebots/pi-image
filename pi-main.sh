@@ -23,9 +23,9 @@ function rebuild_repo {
     pushd /sb-debs
     echo "Rebuilding local apt repository"
     dpkg-scanpackages . /dev/null > Packages
-    xz -3 Packages
+    xz -f -3 Packages
     dpkg-scansources . /dev/null > Sources
-    xz -3 Sources
+    xz -f -3 Sources
     popd
 }
 
