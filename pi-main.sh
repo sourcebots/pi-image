@@ -13,7 +13,6 @@ echo "Installing bits and pieces from backports"
 apt-get -t jessie-backports install -y python3-cffi
 
 mkdir sb-debs
-mkdir building
 
 echo "Adding local repository to sources"
 echo "deb [trusted=yes] file:/sb-debs ./" >> /etc/apt/sources.list
@@ -62,5 +61,3 @@ function buildme {
 buildme https://github.com/sourcebots/sb-vision sb-vision
 buildme https://github.com/sourcebots/robotd robotd
 buildme https://github.com/sourcebots/runusb runusb
-
-rm -rf building

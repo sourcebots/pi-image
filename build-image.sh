@@ -16,6 +16,9 @@ mount /dev/mapper/loop0p2 $TARGET
 mount --bind /proc $TARGET/proc
 mount --bind /dev $TARGET/dev
 
+mkdir $TARGET/building
+mount --bind $(pwd)/components $TARGET/building
+
 cp /usr/bin/qemu-arm-static $TARGET/usr/bin/qemu-arm-static
 cp pi-main.sh $TARGET/main.sh
 # Disable ld preload
@@ -29,6 +32,8 @@ mv ./ld.so.preload $TARGET/etc/ld.so.preload
 
 umount $TARGET/proc
 umount $TARGET/dev
+umount $TARGET/building
+rmdir $TARGET/building
 
 sleep 2
 
