@@ -1,0 +1,9 @@
+[submodule "components/sb-vision"]
+	path = components/sb-vision
+	url = https://github.com/sourcebots/sb-vision.git
+[submodule "components/robotd"]
+	path = components/robotd
+	url = https://github.com/sourcebots/robotd.git
+[submodule "components/runusb"]
+	path = components/runusb
+	url = https://github.com/sourcebots/runusb.git
