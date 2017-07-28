@@ -41,6 +41,7 @@ function buildme {
     xz -3 Packages
     dpkg-scansources . /dev/null > Sources
     xz -3 Sources
+    popd
 
     echo "Re-updating apt"
     apt-get update -y
