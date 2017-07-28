@@ -15,8 +15,12 @@ TARGET=raspbian-base
 
 sha1sum $IMAGE
 
+truncate --size=4G $IMAGE
+parted $IMAGE -- resizepart 2 -1
+
 mkdir $TARGET
 kpartx -av $IMAGE
+resize2fs /dev/mapper/loop0p2
 mount /dev/mapper/loop0p2 $TARGET
 
 cp /usr/bin/qemu-arm-static $TARGET/usr/bin/qemu-arm-static
