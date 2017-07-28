@@ -19,6 +19,18 @@ echo "Adding local repository to sources"
 echo "deb [trusted=yes] file:/sb-debs ./" >> /etc/apt/sources.list
 echo "deb-src [trusted=yes] file:/sb-debs ./" >> /etc/apt/sources.list
 
+function rebuild_repo {
+    pushd /sb-debs
+    echo "Rebuilding local apt repository"
+    dpkg-scanpackages . /dev/null > Packages
+    xz -3 Packages
+    dpkg-scansources . /dev/null > Sources
+    xz -3 Sources
+    popd
+}
+
+rebuild_repo
+
 function buildme {
     pushd building
     mkdir build-$2
@@ -38,13 +50,7 @@ function buildme {
     popd
     popd
 
-    pushd sb-debs
-    echo "Rebuilding local apt repository"
-    dpkg-scanpackages . /dev/null > Packages
-    xz -3 Packages
-    dpkg-scansources . /dev/null > Sources
-    xz -3 Sources
-    popd
+    rebuild_repo
 
     echo "Re-updating apt"
     apt-get update -y
