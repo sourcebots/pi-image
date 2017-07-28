@@ -2,23 +2,28 @@
 
 set -e
 
+echo "Bringing in image"
+
 cp /tmp/raspbian-base.img ./raspbian-base.img
 IMAGE=raspbian-base.img
 TARGET=raspbian-base
 
 sha1sum $IMAGE
 
+echo "Setting up mount"
 rmdir $TARGET || true
 mkdir $TARGET
 kpartx -av $IMAGE
 mount /dev/mapper/loop0p2 $TARGET
 
+echo "Bind-mounting useful directories"
 mount --bind /proc $TARGET/proc
 mount --bind /dev $TARGET/dev
 
 mkdir $TARGET/building
 mount --bind $(pwd)/components $TARGET/building
 
+echo "Copying in some drive scripts"
 cp /usr/bin/qemu-arm-static $TARGET/usr/bin/qemu-arm-static
 cp pi-main.sh $TARGET/main.sh
 # Disable ld preload
