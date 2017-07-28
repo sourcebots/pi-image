@@ -5,6 +5,9 @@ set -e
 export LC_ALL="en_GB.UTF-8"
 export LANG="en_GB.UTF-8"
 
+echo "Putting hostname into /etc/hosts"
+echo "127.0.0.1	$(hostname)" >> /etc/hosts
+
 echo "Installing bits and pieces from backports"
 
 apt-get -t jessie-backports install -y python3-cffi
