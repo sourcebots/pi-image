@@ -20,6 +20,7 @@ parted $IMAGE -- resizepart 2 -1
 
 mkdir $TARGET
 kpartx -av $IMAGE
+e2fsck -fy /dev/mapper/loop0p2
 resize2fs /dev/mapper/loop0p2
 mount /dev/mapper/loop0p2 $TARGET
 
