@@ -47,7 +47,7 @@ echo "Clearing out leftover users"
 sleep 2
 
 echo "lsof:"
-lsof $TARGET
+lsof $TARGET || true
 echo "kill -TERM"
 fuser -k -TERM $TARGET || true
 sleep 2
