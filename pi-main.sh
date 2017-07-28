@@ -28,7 +28,7 @@ function buildme {
     ls -l
     pushd $2
     echo "Installing build dependencies for $2"
-    yes | sudo mk-build-deps -i
+    yes | sudo mk-build-deps -i debian/control
     echo "Building $2"
     debuild -uc -us
     popd
