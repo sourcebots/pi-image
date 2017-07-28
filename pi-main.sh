@@ -33,6 +33,7 @@ function buildme {
 }
 
 buildme https://github.com/sourcebots/runusb runusb
+buildme https://github.com/sourcebots/sb-vision sb-vision
 buildme https://github.com/sourcebots/robotd robotd
 
 cd ..
@@ -54,4 +55,5 @@ apt-get update -y
 
 echo "Installing local packages"
 apt-get install -y runusb || true
+apt-get install -y sb-vision || true
 apt-get install -y robotd || true
