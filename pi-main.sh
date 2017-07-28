@@ -56,7 +56,7 @@ function buildme {
     apt-get update -y
 
     echo "Installing $2"
-    apt-get install -y $2
+    apt-get install -y $2 || true
 }
 
 buildme https://github.com/sourcebots/sb-vision sb-vision
