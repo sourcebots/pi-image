@@ -46,9 +46,12 @@ rmdir $TARGET/building
 echo "Clearing out leftover users"
 sleep 2
 
+echo "lsof:"
 lsof $TARGET
+echo "kill -TERM"
 fuser -k -TERM $TARGET || true
 sleep 2
+echo "kill -KILL"
 fuser -k -KILL $TARGET || true
 
 echo "Unmounting target"
