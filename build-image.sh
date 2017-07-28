@@ -13,6 +13,9 @@ mkdir $TARGET
 kpartx -av $IMAGE
 mount /dev/mapper/loop0p2 $TARGET
 
+mount --bind /proc $TARGET/proc
+mount --bind /dev $TARGET/dev
+
 cp /usr/bin/qemu-arm-static $TARGET/usr/bin/qemu-arm-static
 cp pi-main.sh $TARGET/main.sh
 # Disable ld preload
@@ -23,6 +26,9 @@ chroot $TARGET /main.sh
 rm $TARGET/main.sh
 rm $TARGET/usr/bin/qemu-arm-static
 mv ./ld.so.preload $TARGET/etc/ld.so.preload
+
+umount $TARGET/proc
+umount $TARGET/dev
 
 sleep 2
 
