@@ -34,6 +34,16 @@ function buildme {
     mv *.tar.* /sb-debs/
     popd
     popd
+
+    pushd sb-debs
+    echo "Rebuilding local apt repository"
+    dpkg-scanpackages . /dev/null > Packages
+    xz -3 Packages
+    dpkg-scansources . /dev/null > Sources
+    xz -3 Sources
+
+    echo "Re-updating apt"
+    apt-get update -y
 }
 
 buildme https://github.com/sourcebots/runusb runusb
@@ -41,16 +51,6 @@ buildme https://github.com/sourcebots/sb-vision sb-vision
 buildme https://github.com/sourcebots/robotd robotd
 
 rm -rf building
-
-echo "Constructing local apt repository"
-cd /sb-debs
-dpkg-scanpackages . /dev/null > Packages
-xz -3 Packages
-dpkg-scansources . /dev/null > Sources
-xz -3 Sources
-
-echo "Re-updating apt"
-apt-get update -y
 
 echo "Installing local packages"
 apt-get install -y runusb || true
