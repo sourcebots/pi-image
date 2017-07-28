@@ -12,6 +12,10 @@ apt-get -t jessie-backports install -y python3-cffi
 mkdir sb-debs
 mkdir building
 
+echo "Adding local repository to sources"
+echo "deb [trusted=yes] file:/sb-debs ./" >> /etc/apt/sources.list
+echo "deb-src [trusted=yes] file:/sb-debs ./" >> /etc/apt/sources.list
+
 function buildme {
     pushd building
     mkdir build-$2
@@ -44,10 +48,6 @@ dpkg-scanpackages . /dev/null > Packages
 xz -3 Packages
 dpkg-scansources . /dev/null > Sources
 xz -3 Sources
-
-echo "Adding local repository to sources"
-echo "deb [trusted=yes] file:/sb-debs ./" >> /etc/apt/sources.list
-echo "deb-src [trusted=yes] file:/sb-debs ./" >> /etc/apt/sources.list
 
 echo "Re-updating apt"
 apt-get update -y
