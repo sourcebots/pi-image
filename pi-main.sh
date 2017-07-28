@@ -41,9 +41,9 @@ rm -rf building
 echo "Constructing local apt repository"
 cd /sb-debs
 dpkg-scanpackages . /dev/null > Packages
-xz -9 Packages
+xz -3 Packages
 dpkg-scansources . /dev/null > Sources
-xz -9 Sources
+xz -3 Sources
 
 echo "Adding local repository to sources"
 echo "deb [trusted=yes] file:/sb-debs ./" >> /etc/apt/sources.list
