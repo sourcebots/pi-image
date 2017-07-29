@@ -56,3 +56,9 @@ function buildme {
 buildme sb-vision
 buildme robotd
 buildme runusb
+
+tee /etc/fstab <<<EOF
+proc	/proc	proc	defaults	0	0
+/dev/mmcblk0p1	/boot	vfat	defaults	0	2
+/dev/mmcblk0p2	/	ext4	defaults,noatime	0	1
+EOF
