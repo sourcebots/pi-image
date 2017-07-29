@@ -24,6 +24,7 @@ jobs:
                 paths:
                   - /tmp/raspbian-base.img
             - run: sudo ./build-image.sh
+            - run: sudo ./edit-boot.sh
             - run: sudo xz --verbose -3 pi-image.img
             - store_artifacts:
                 path: pi-image.img.xz
