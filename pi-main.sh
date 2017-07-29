@@ -57,6 +57,11 @@ buildme sb-vision
 buildme robotd
 buildme runusb
 
+echo "Setting passwords"
+echo 'root:beeeeees' | chpasswd
+echo 'pi:beeeeees' | chpasswd
+
+echo "Updating fstab"
 tee /etc/fstab <<<EOF
 proc	/proc	proc	defaults	0	0
 /dev/mmcblk0p1	/boot	vfat	defaults	0	2
