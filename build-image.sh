@@ -26,6 +26,10 @@ mount --bind $(pwd)/components $TARGET/building
 echo "Copying in some drive scripts"
 cp /usr/bin/qemu-arm-static $TARGET/usr/bin/qemu-arm-static
 cp pi-main.sh $TARGET/main.sh
+
+echo "Inserting version"
+git rev-parse HEAD > $TARGET/sb-version
+
 # Disable ld preload
 mv $TARGET/etc/ld.so.preload ./ld.so.preload
 
