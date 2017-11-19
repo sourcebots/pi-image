@@ -34,8 +34,9 @@ apt-get install -y \
 
 echo "Install some useful tools for debugging"
 apt-get install -y \
-    screen \
+    ipython3\
     htop \
+    screen \
     vim
 
 echo "Rebuilding locale"
