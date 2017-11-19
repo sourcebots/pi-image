@@ -32,6 +32,12 @@ apt-get install -y \
     libopencv-photo-dev \
     python3-dev
 
+echo "Install some useful tools for debugging"
+apt-get install -y \
+    screen \
+    htop \
+    vim
+
 echo "Rebuilding locale"
 locale-gen en_US en_US.UTF-8
 locale-gen en_GB en_GB.UTF-8
