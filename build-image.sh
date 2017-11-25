@@ -21,7 +21,7 @@ mount --bind /proc $TARGET/proc
 mount --bind /dev $TARGET/dev
 
 mkdir $TARGET/building
-mount --bind $(pwd)/components $TARGET/building
+mount --bind $PWD/components $TARGET/building
 
 echo "Copying in some drive scripts"
 cp /usr/bin/qemu-arm-static $TARGET/usr/bin/qemu-arm-static
