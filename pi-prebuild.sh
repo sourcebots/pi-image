@@ -34,10 +34,11 @@ apt-get install -y \
 
 echo "Install some useful tools for debugging"
 apt-get install -y \
-    ipython3\
+    ipython3 \
     htop \
+    python3-pip \
     screen \
-    vim
+    vim \
 
 echo "Rebuilding locale"
 locale-gen en_US en_US.UTF-8
