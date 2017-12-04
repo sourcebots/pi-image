@@ -33,6 +33,8 @@ chroot $TARGET /prebuild.sh
 
 echo "Cleaning up"
 
+set -x
+
 rm $TARGET/prebuild.sh
 rm $TARGET/usr/bin/qemu-arm-static
 mv ./ld.so.preload $TARGET/etc/ld.so.preload
