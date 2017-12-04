@@ -36,6 +36,8 @@ apt-get install -y \
 #apt-get -t jessie-backports install -y python3-cffi
 
 echo "Rebuilding locale"
-locale-gen en_US en_US.UTF-8
-locale-gen en_GB en_GB.UTF-8
+echo "en_GB.UTF-8 UTF-8" > /etc/locale.gen
+echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
+
+locale-gen
 dpkg-reconfigure locales
