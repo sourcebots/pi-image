@@ -41,7 +41,7 @@ mv ./ld.so.preload $TARGET/etc/ld.so.preload
 
 sleep 2
 
-lsof $TARGET
+lsof $TARGET || true
 fuser -k -TERM $TARGET || true
 sleep 2
 fuser -k -KILL $TARGET || true
