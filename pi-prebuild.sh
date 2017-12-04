@@ -40,6 +40,4 @@ echo "en_GB.UTF-8 UTF-8" > /etc/locale.gen
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 
 locale-gen
-dpkg-reconfigure locales
-
-true
+dpkg-reconfigure locales || true
