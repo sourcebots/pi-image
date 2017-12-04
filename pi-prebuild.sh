@@ -33,7 +33,7 @@ apt-get install -y \
     python3-dev
 
 echo "Installing bits and pieces from backports"
-apt-get -t stretch-backports install -y python3-cffi
+apt-get -t stretch install -y python3-cffi
 
 echo "Rebuilding locale"
 echo "en_GB.UTF-8 UTF-8" > /etc/locale.gen
