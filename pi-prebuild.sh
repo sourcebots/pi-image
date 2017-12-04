@@ -8,8 +8,8 @@ uname -a
 export DEBIAN_FRONTEND=noninteractive
 export APT_LISTCHANGES_FRONTEND=none
 
-echo "Adding backports"
-echo "deb [trusted=yes] http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list
+#echo "Adding backports"
+#echo "deb [trusted=yes] http://ftp.debian.org/debian stretch-backports main" >> /etc/apt/sources.list
 
 echo "Updating apt"
 apt-get update -y
@@ -31,6 +31,9 @@ apt-get install -y \
     libopencv-video-dev \
     libopencv-photo-dev \
     python3-dev
+
+#echo "Installing bits and pieces from backports"
+#apt-get -t jessie-backports install -y python3-cffi
 
 echo "Rebuilding locale"
 locale-gen en_US en_US.UTF-8
