@@ -26,7 +26,6 @@ mount --bind $PWD/components $TARGET/building
 echo "Copying in some drive scripts"
 cp /usr/bin/qemu-arm-static $TARGET/usr/bin/qemu-arm-static
 cp pi-main.sh $TARGET/main.sh
-cp additional-libraries.txt $TARGET/additional-libraries.txt
 
 # Disable ld preload
 mv $TARGET/etc/ld.so.preload ./ld.so.preload

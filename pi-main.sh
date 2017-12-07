@@ -73,5 +73,7 @@ proc	/proc	proc	defaults	0	0
 EOF
 
 echo "Installing additional libraries"
-pip install -r /additional-libraries.txt
+apt-get install -y \
+    python3-scipy \
+    python3-numpy
 
