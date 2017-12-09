@@ -7,6 +7,7 @@ echo "Bringing in image"
 cp /tmp/raspbian-base.img ./raspbian-base.img
 IMAGE=raspbian-base.img
 TARGET=raspbian-base
+VERSION_FILE=$TARGET/sb-version
 
 sha1sum $IMAGE
 
@@ -26,6 +27,14 @@ mount --bind $PWD/components $TARGET/building
 echo "Copying in some drive scripts"
 cp /usr/bin/qemu-arm-static $TARGET/usr/bin/qemu-arm-static
 cp pi-main.sh $TARGET/main.sh
+
+echo "Inserting version"
+echo "Source Bots Raspberry Pi image" > $VERSION_FILE
+echo >> $VERSION_FILE
+git remote get-url origin >> $VERSION_FILE
+git rev-parse HEAD >> $VERSION_FILE
+echo >> $VERSION_FILE
+git submodule foreach "git remote get-url origin; git rev-parse HEAD; echo" >> $VERSION_FILE
 
 # Disable ld preload
 mv $TARGET/etc/ld.so.preload ./ld.so.preload

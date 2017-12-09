@@ -32,6 +32,14 @@ apt-get install -y \
     libopencv-photo-dev \
     python3-dev
 
+echo "Install some useful tools for debugging"
+apt-get install -y \
+    ipython3 \
+    htop \
+    python3-pip \
+    screen \
+    vim
+
 echo "Installing bits and pieces from backports"
 apt-get -t stretch install -y python3-cffi
 
