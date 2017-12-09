@@ -55,6 +55,7 @@ function buildme {
 buildme automount
 buildme sb-vision
 buildme robotd
+buildme robot-api
 buildme runusb
 
 echo "Setting passwords"

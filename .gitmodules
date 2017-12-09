@@ -10,3 +10,6 @@
 [submodule "components/automount"]
 	path = components/automount
 	url = https://github.com/sourcebots/automount
+[submodule "components/robot-api"]
+	path = components/robot-api
+	url = https://github.com/sourcebots/robot-api.git
