@@ -2,9 +2,8 @@ version: 2.0
 
 jobs:
     build:
-        machine:
-          enabled: true
-          image: "ubuntu:latest"
+        docker:
+          - image: "ubuntu:latest"
         working_directory: ~/pi-image
         steps:
             - checkout
