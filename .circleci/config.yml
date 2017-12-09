@@ -2,13 +2,14 @@ version: 2.0
 
 jobs:
     build:
-        docker:
-          - image: "ubuntu:latest"
+        machine:
+          enabled: true
+          image: "circleci/classic:latest"
         working_directory: ~/pi-image
         steps:
             - checkout
-            - run: ./install-dependencies.sh
             - run: git submodule update --init
+            - run: sudo ./install-dependencies.sh
             - restore_cache:
                 key: baseimage-{{ .Branch }}-{{ checksum "download-image.sh" }}
             - run: ./download-image.sh /tmp/raspbian.zip
