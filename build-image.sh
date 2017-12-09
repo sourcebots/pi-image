@@ -29,7 +29,6 @@ cp /usr/bin/qemu-arm-static $TARGET/usr/bin/qemu-arm-static
 cp pi-main.sh $TARGET/main.sh
 
 echo "Inserting version"
-
 echo "Source Bots Raspberry Pi image" > $VERSION_FILE
 echo >> $VERSION_FILE
 git remote get-url origin >> $VERSION_FILE
