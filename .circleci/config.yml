@@ -7,7 +7,7 @@ jobs:
         working_directory: ~/pi-image
         steps:
             - checkout
-            - run: sudo ./install-dependencies.sh
+            - run: ./install-dependencies.sh
             - run: git submodule update --init
             - restore_cache:
                 key: baseimage-{{ .Branch }}-{{ checksum "download-image.sh" }}
