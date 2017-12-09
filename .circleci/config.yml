@@ -7,8 +7,8 @@ jobs:
         working_directory: ~/pi-image
         steps:
             - checkout
-            - run: git submodule update --init
             - run: sudo ./install-dependencies.sh
+            - run: git submodule update --init
             - restore_cache:
                 key: baseimage-{{ .Branch }}-{{ checksum "download-image.sh" }}
             - run: ./download-image.sh /tmp/raspbian.zip
