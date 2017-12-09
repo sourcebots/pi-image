@@ -11,10 +11,6 @@ echo "127.0.0.1	$(hostname)" >> /etc/hosts
 echo "Disable dhcpcd"
 systemctl disable dhcpcd.service
 
-echo "Installing bits and pieces from backports"
-
-apt-get -t jessie-backports install -y python3-cffi
-
 mkdir sb-debs
 
 echo "Adding local repository to sources"
@@ -41,7 +37,7 @@ function buildme {
     yes | sudo mk-build-deps -i debian/control
 
     echo "Building $2"
-    debuild -uc -us
+    DEB_BUILD_OPTIONS=nocheck debuild -uc -us
     popd
 
     mv *.deb /sb-debs/
