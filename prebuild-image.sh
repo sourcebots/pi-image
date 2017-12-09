@@ -33,13 +33,15 @@ chroot $TARGET /prebuild.sh
 
 echo "Cleaning up"
 
+set -x
+
 rm $TARGET/prebuild.sh
 rm $TARGET/usr/bin/qemu-arm-static
 mv ./ld.so.preload $TARGET/etc/ld.so.preload
 
 sleep 2
 
-lsof $TARGET
+lsof $TARGET || true
 fuser -k -TERM $TARGET || true
 sleep 2
 fuser -k -KILL $TARGET || true
