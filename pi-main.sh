@@ -37,7 +37,7 @@ function buildme {
     yes | sudo mk-build-deps -i debian/control
 
     echo "Building $2"
-    debuild -uc -us
+    DEB_BUILD_OPTIONS=nocheck debuild -uc -us
     popd
 
     mv *.deb /sb-debs/
