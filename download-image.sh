@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Serial: 2
+
 TARGET=${1:-raspbian.zip}
 IMAGE=https://downloads.raspberrypi.org/raspbian_lite_latest
 
