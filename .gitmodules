@@ -7,9 +7,9 @@
 [submodule "components/runusb"]
 	path = components/runusb
 	url = https://github.com/sourcebots/runusb.git
-[submodule "components/automount"]
-	path = components/automount
-	url = https://github.com/sourcebots/automount
 [submodule "components/robot-api"]
 	path = components/robot-api
 	url = https://github.com/sourcebots/robot-api.git
+[submodule "components/usbmount"]
+	path = components/usbmount
+	url = https://github.com/rbrito/usbmount
