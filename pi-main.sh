@@ -52,7 +52,7 @@ function buildme {
     apt-get install -y $1 || true
 }
 
-buildme automount
+buildme usbmount
 buildme sb-vision
 buildme robotd
 buildme robot-api
