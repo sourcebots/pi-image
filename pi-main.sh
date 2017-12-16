@@ -2,6 +2,8 @@
 
 set -e
 
+export DEBIAN_FRONTEND=noninteractive
+
 export LC_ALL="en_GB.UTF-8"
 export LANG="en_GB.UTF-8"
 
@@ -49,7 +51,7 @@ function buildme {
     apt-get update -y
 
     echo "Installing $1"
-    apt-get install -y $1 || true
+    apt-get -o "Dpkg::Options::=--force-confnew" install -y $1 || true
 }
 
 buildme usbmount
