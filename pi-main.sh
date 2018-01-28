@@ -38,7 +38,7 @@ function buildme {
     echo "Installing build dependencies for $1"
     yes | sudo mk-build-deps -i debian/control
 
-    echo "Building $2"
+    echo "Building $1"
     DEB_BUILD_OPTIONS=nocheck debuild -uc -us
     popd
 
