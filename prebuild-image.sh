@@ -15,15 +15,18 @@ TARGET=raspbian-base
 
 sha1sum $IMAGE
 
+echo "Expanding the image and partition to 4G"
 truncate --size=4G $IMAGE
 parted $IMAGE -- resizepart 2 -1
 
+echo "Mounting the image (including growing the filesystem)"
 mkdir $TARGET
 kpartx -av $IMAGE
 e2fsck -fy /dev/mapper/loop0p2
 resize2fs /dev/mapper/loop0p2
 mount /dev/mapper/loop0p2 $TARGET
 
+echo "Copying in some drive scripts"
 cp /usr/bin/qemu-arm-static $TARGET/usr/bin/qemu-arm-static
 cp pi-prebuild.sh $TARGET/prebuild.sh
 # Disable ld preload
