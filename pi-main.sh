@@ -16,8 +16,8 @@ systemctl disable dhcpcd.service
 mkdir sb-debs
 
 echo "Adding local repository to sources"
-echo "deb [trusted=yes] file:/sb-debs ./" >> /etc/apt/sources.list
-echo "deb-src [trusted=yes] file:/sb-debs ./" >> /etc/apt/sources.list
+echo "deb [trusted=yes] file:/sb-debs ./" >> /etc/apt/sources.list.d/sourcebots.list
+echo "deb-src [trusted=yes] file:/sb-debs ./" >> /etc/apt/sources.list.d/sourcebots.list
 
 function rebuild_repo {
     pushd /sb-debs
