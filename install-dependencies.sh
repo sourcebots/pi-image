@@ -2,10 +2,10 @@
 
 set -e
 echo "Updating apt"
-apt-get update
+apt-get --quiet update
 
 function canhas {
-    DEBIAN_FRONTEND=noninteractive apt-get -y install $1
+    DEBIAN_FRONTEND=noninteractive apt-get --quiet -y install $1
 }
 
 echo "Installing dependencies"

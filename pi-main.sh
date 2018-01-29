@@ -48,10 +48,10 @@ function buildme {
     rebuild_repo
 
     echo "Re-updating apt"
-    apt-get update -y
+    apt-get --quiet update -y
 
     echo "Installing $1"
-    apt-get -o "Dpkg::Options::=--force-confnew" install -y $1 || true
+    apt-get --quiet -o "Dpkg::Options::=--force-confnew" install -y $1 || true
 }
 
 buildme usbmount
@@ -72,7 +72,7 @@ proc	/proc	proc	defaults	0	0
 EOF
 
 echo "Installing additional libraries"
-apt-get install -y \
+apt-get --quiet install -y \
     python3-scipy \
     python3-numpy
 
