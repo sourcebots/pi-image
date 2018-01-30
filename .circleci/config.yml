@@ -33,6 +33,7 @@ jobs:
                 destination: pi-image.img.xz
             - store_artifacts:
                 path: sb-debs
+                destination: sb-debs
             - store_artifacts:
                 path: update.tar.xz
                 destination: update.tar.xz
