@@ -81,4 +81,4 @@ cp $IMAGE pi-image.img
 echo "Creating update package"
 # TODO: once `runusb` is up to date, use its `create-update` script instead of
 # duplicating that logic here (https://github.com/sourcebots/pi-image/issues/14)
-tar --create --xz --file update.tar.xz sb-debs/*.deb
+tar --create --xz --file update.tar.xz --transform 's_sb-debs/__g' -- sb-debs/*.deb
