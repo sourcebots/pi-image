@@ -41,6 +41,9 @@ mv $TARGET/etc/ld.so.preload ./ld.so.preload
 
 chroot $TARGET /main.sh
 
+echo "Copying out the built packages"
+cp -r $TARGET/sb-debs .
+
 echo "Cleaning up: Removing drive scripts"
 
 rm $TARGET/main.sh
@@ -74,3 +77,8 @@ kpartx -d $IMAGE
 sha1sum $IMAGE
 
 cp $IMAGE pi-image.img
+
+echo "Creating update package"
+# TODO: once `runusb` is up to date, use its `create-update` script instead of
+# duplicating that logic here (https://github.com/sourcebots/pi-image/issues/14)
+tar --create --xz --file update.tar.xz --transform 's_sb-debs/__g' -- sb-debs/*.deb
