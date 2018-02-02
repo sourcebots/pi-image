@@ -7,16 +7,17 @@ echo "Bringing in image"
 cp /tmp/raspbian-base.img ./raspbian-base.img
 IMAGE=raspbian-base.img
 TARGET=raspbian-base
+VERSION_FILE_REF=sb-version.reference
 VERSION_FILE=sb-version
 
 sha1sum $IMAGE
 
 echo "Creating version file"
-echo >> $VERSION_FILE
-git remote get-url origin >> $VERSION_FILE
-git rev-parse HEAD >> $VERSION_FILE
-echo >> $VERSION_FILE
-git submodule foreach "git remote get-url origin; git rev-parse HEAD; echo" >> $VERSION_FILE
+echo >> $VERSION_FILE_REF
+git remote get-url origin >> $VERSION_FILE_REF
+git rev-parse HEAD >> $VERSION_FILE_REF
+echo >> $VERSION_FILE_REF
+git submodule foreach "git remote get-url origin; git rev-parse HEAD; echo" >> $VERSION_FILE_REF
 
 echo "Setting up mount"
 rmdir $TARGET || true
@@ -37,7 +38,7 @@ cp pi-main.sh $TARGET/main.sh
 
 echo "Inserting version"
 echo "Source Bots Raspberry Pi image" > $TARGET/$VERSION_FILE
-cat $VERSION_FILE >> $TARGET/$VERSION_FILE
+cat $VERSION_FILE_REF >> $TARGET/$VERSION_FILE
 
 # Disable ld preload
 mv $TARGET/etc/ld.so.preload ./ld.so.preload
@@ -84,5 +85,6 @@ cp $IMAGE pi-image.img
 echo "Creating update package"
 # TODO: once `runusb` is up to date, use its `create-update` script instead of
 # duplicating that logic here (https://github.com/sourcebots/pi-image/issues/14)
-(echo "Source Bots Raspberry Pi image"; cat $VERSION_FILE) > $VERSION_FILE
+echo "Source Bots Raspberry Pi image" > $VERSION_FILE
+cat $VERSION_FILE_REF >> $VERSION_FILE
 tar --create --xz --file update.tar.xz --transform 's_sb-debs/__g' -- sb-debs/*.deb $VERSION_FILE
