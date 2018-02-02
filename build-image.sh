@@ -85,6 +85,6 @@ cp $IMAGE pi-image.img
 echo "Creating update package"
 # TODO: once `runusb` is up to date, use its `create-update` script instead of
 # duplicating that logic here (https://github.com/sourcebots/pi-image/issues/14)
-echo "Source Bots Raspberry Pi image" > $VERSION_FILE
+echo "Source Bots Raspberry Pi update" > $VERSION_FILE
 cat $VERSION_FILE_REF >> $VERSION_FILE
 tar --create --xz --file update.tar.xz --transform 's_sb-debs/__g' -- sb-debs/*.deb $VERSION_FILE
