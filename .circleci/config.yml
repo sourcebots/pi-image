@@ -28,6 +28,7 @@ jobs:
             - run: sudo ./build-image.sh
             - run: sudo ./edit-boot.sh
             - run: sudo xz --verbose -3 pi-image.img
+            - run: sha1sum pi-image.img.xz sb-debs/* update.tar.xz | tee SHA1SUMS
             - store_artifacts:
                 path: pi-image.img.xz
                 destination: pi-image.img.xz
@@ -37,3 +38,6 @@ jobs:
             - store_artifacts:
                 path: update.tar.xz
                 destination: update.tar.xz
+            - store_artifacts:
+                path: SHA1SUMS
+                destination: SHA1SUMS
