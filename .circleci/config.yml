@@ -11,10 +11,10 @@ jobs:
             - run: git submodule update --init
             - run: sudo ./install-dependencies.sh
             - restore_cache:
-                key: baseimage-{{ .Branch }}-{{ checksum "download-image.sh" }}
+                key: baseimage-branch-agnostic-download-{{ checksum "download-image.sh" }}
             - run: ./download-image.sh /tmp/raspbian.zip
             - save_cache:
-                key: baseimage-{{ .Branch }}-{{ checksum "download-image.sh" }}
+                key: baseimage-branch-agnostic-download-{{ checksum "download-image.sh" }}
                 paths:
                   - /tmp/raspbian.zip
             - run: cp /tmp/raspbian.zip ./
