@@ -20,11 +20,17 @@ jobs:
             - run: cp /tmp/raspbian.zip ./
             - restore_cache:
                 keys:
-                 - prebuilt-{{ checksum "download-image.sh" }}-{{ checksum "prebuild-image.sh" }}-{{ checksum "pi-prebuild.sh" }}-{{ .Branch }}
+                  # Branch specific cache with fallback to a general cache.
+                  # Note: the semi-random string at the end reduces the chances
+                  # that two branches where one is the prefix of another
+                  # (e.g: 'foo' and 'foo-bar') can accidentally share a cache.
+                  # While this is explicitly enabled by the second key, we don't
+                  # really want it happening under the first key.
+                 - prebuilt-{{ checksum "download-image.sh" }}-{{ checksum "prebuild-image.sh" }}-{{ checksum "pi-prebuild.sh" }}-{{ .Branch }}-Z@Z0
                  - prebuilt-{{ checksum "download-image.sh" }}-{{ checksum "prebuild-image.sh" }}-{{ checksum "pi-prebuild.sh" }}-
             - run: sudo ./prebuild-image.sh
             - save_cache:
-                key: prebuilt-{{ checksum "download-image.sh" }}-{{ checksum "prebuild-image.sh" }}-{{ checksum "pi-prebuild.sh" }}-{{ .Branch }}
+                key: prebuilt-{{ checksum "download-image.sh" }}-{{ checksum "prebuild-image.sh" }}-{{ checksum "pi-prebuild.sh" }}-{{ .Branch }}-Z@Z0
                 paths:
                   - /tmp/raspbian-base.img
             - run: sudo ./build-image.sh
