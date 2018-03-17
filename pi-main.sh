@@ -76,3 +76,5 @@ apt-get --quiet install -y \
     python3-scipy \
     python3-numpy
 
+# turn on persistent journalctl logging
+echo "Storage=persistent" >> /etc/systemd/journald.conf
