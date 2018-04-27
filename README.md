@@ -3,7 +3,7 @@ pi builder
 
 [![CircleCI](https://circleci.com/gh/sourcebots/pi-image.svg?style=shield)](https://circleci.com/gh/sourcebots/pi-image)
 
-Scripts for building images and updates ready for deploying to a Raspberry Pi. It should work on any version of Raspberry Pi, however the scripts are only tested on a Raspberry Pi 3.
+Scripts for building images and updates ready for deploying to a Raspberry Pi. It should work on any version of the Raspberry Pi, however the scripts are only tested on a Raspberry Pi 3.
 
 Scripts:
 
