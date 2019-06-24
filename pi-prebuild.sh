@@ -8,9 +8,6 @@ uname -a
 export DEBIAN_FRONTEND=noninteractive
 export APT_LISTCHANGES_FRONTEND=none
 
-echo "Adding backports"
-echo "deb [trusted=yes] http://ftp.debian.org/debian stretch-backports main" >> /etc/apt/sources.list
-
 echo "Updating apt"
 apt-get --quiet update -y
 
@@ -30,7 +27,8 @@ apt-get --quiet install -y \
     libopencv-contrib-dev \
     libopencv-video-dev \
     libopencv-photo-dev \
-    python3-dev
+    python3-dev \
+    python3-cffi
 
 echo "Install some useful tools for debugging"
 apt-get --quiet install -y \
@@ -39,9 +37,6 @@ apt-get --quiet install -y \
     python3-pip \
     screen \
     vim
-
-echo "Installing bits and pieces from backports"
-apt-get --quiet -t stretch install -y python3-cffi
 
 echo "Rebuilding locale"
 echo "en_GB.UTF-8 UTF-8" > /etc/locale.gen
